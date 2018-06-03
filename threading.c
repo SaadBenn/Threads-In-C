@@ -1,3 +1,8 @@
+/*
+ NAME: Saad Mushtaq
+ COMP 3430 Operating System
+ Assignment 1 Q1
+*/
 // reminder - compile with -lpthread
 #include <stdio.h>
 #include <pthread.h>
@@ -77,10 +82,15 @@ int main(int argc, char *argv[]) {
             
             // create the worker thread
             pthread_create(&thread, NULL, worker_thread, matrix);
-            
-            // suspend execution of the calling thread until the target thread terminates
+        }
+    }
+    
+    // suspend execution of the calling thread until the target thread terminates
+    for (i = 0; i < ROWS; i++) {
+        for (j = 0; j < COLS_IN_RESULTANT_MATRIX; j++) {
             pthread_join(thread, NULL);
         }
     }
+    
     print_matrix();
 }
